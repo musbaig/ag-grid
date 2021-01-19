@@ -3,9 +3,14 @@ import { renderToString } from 'react-dom/server';
 import {AgGridColumn, AgGridReact} from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import ViewedIndicator from './ViewedIndicator.jsx';
+
 
 function App() {
 	const rowSpan = params => params.data.noOfTreatments >= 1 ? params.data.noOfTreatments : 1;
+	const frameworkComponents = {
+		viewedIndicator: ViewedIndicator,
+	};
 	const rowData = [
 		{
 			patient: 'Cluff, Lucy M.',
@@ -16,7 +21,8 @@ function App() {
 			weight: 150,
       bp: 171,
       hr: 234,
-      temp: 96
+      temp: 96,
+			viewed: false
 		},
 		{
 			patient: 'Cluff, Lucy M.',
@@ -26,7 +32,8 @@ function App() {
 			weight: 145,
       bp: 171,
       hr: 234,
-      temp: 96
+      temp: 96,
+			viewed: true
 		},
 		{
 			patient: 'Cluff, Lucy M.',
@@ -36,7 +43,8 @@ function App() {
 			weight: 132,
       bp: 171,
       hr: 234,
-      temp: 96
+      temp: 96,
+			viewed: true
 		},
 		{
 			patient: 'Dearson, Perry P.',
@@ -47,7 +55,8 @@ function App() {
 			weight: 135,
       bp: 171,
       hr: 234,
-      temp: 96
+      temp: 96,
+			viewed: false
 		},
 		{
 			patient: 'Dearson, Perry P..',
@@ -57,13 +66,15 @@ function App() {
 			weight: 134,
       bp: 171,
       hr: 234,
-      temp: 96
+      temp: 96,
+			viewed: true
 		},
 		{patient: 'Emerson, Frank J.', status: 'onboarding', noOfTreatments: 0}
 	];
 	const columnDefs = [
 		{headerName: 'Patient', field: 'patient', rowSpan, cellClassRules: {'cell-span': rowSpan}, minWidth: 100},
 		{headerName: 'Status', field: 'status', rowSpan, cellClassRules: {'cell-span': rowSpan}, minWidth: 100},
+		{headerName: '', field: 'viewed', cellRenderer: 'viewedIndicator', width: .125, cellStyle: {paddingLeft: 0, paddingRight: 0, margin: 0}},
 		{headerName: 'Treatments', field: 'treatments', minWidth: 100},
 		{headerName: 'Alarms & Alerts', field: 'alarmsAlerts', minWidth: 100},
 		{headerName: 'Weight', field: 'weight', width: 90, suppressSizeToFit: true},
@@ -87,6 +98,7 @@ function App() {
 			<AgGridReact gridOptions={{
 				rowData,
 				columnDefs,
+				frameworkComponents,
 				suppressRowTransform: true
 			}}/>
 			<AgGridReact rowData={cars}>
