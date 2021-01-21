@@ -1,97 +1,96 @@
 import './App.css';
-import { renderToString } from 'react-dom/server';
-import {AgGridColumn, AgGridReact} from 'ag-grid-react';
+import {AgGridReact} from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import ViewedIndicator from './ViewedIndicator.jsx';
+import TreatmentCells from './TreatmentCells.jsx';
 
 
 function App() {
-	const rowSpan = params => params.data.noOfTreatments >= 1 ? params.data.noOfTreatments : 1;
 	const frameworkComponents = {
-		viewedIndicator: ViewedIndicator,
+    treatmentCells: TreatmentCells,
 	};
 	const rowData = [
 		{
+		  id: 1,
 			patient: 'Cluff, Lucy M.',
 			status: 'active',
 			noOfTreatments: 3,
-			treatments: 'Yesterday, July 8',
-			alarmsAlerts: '4 Alert',
-			weight: 150,
-      bp: 171,
-      hr: 234,
-      temp: 96,
-			viewed: false
-		},
-		{
-			patient: 'Cluff, Lucy M.',
-			status: 'active',
-			treatments: '2 days ago, July 7',
-			alarmsAlerts: '2 Alarms',
-			weight: 145,
-      bp: 171,
-      hr: 234,
-      temp: 96,
-			viewed: true
-		},
-		{
-			patient: 'Cluff, Lucy M.',
-			status: 'active',
-			treatments: '9 days ago, June 30',
-			alarmsAlerts: '3 Alarms',
-			weight: 132,
-      bp: 171,
-      hr: 234,
-      temp: 96,
-			viewed: true
+			treatments: [
+        {
+          end: 'Yesterday, July 8',
+          alarmsAlerts: '4 Alert',
+          weight: 150,
+          bp: 171,
+          hr: 234,
+          temp: 96,
+          viewed: false
+        }, {
+          end: '2 days ago, July 7',
+          alarmsAlerts: '2 Alarms',
+          weight: 145,
+          bp: 171,
+          hr: 234,
+          temp: 96,
+          viewed: true
+        }, {
+          end: '9 days ago, June 30',
+          alarmsAlerts: '3 Alarms',
+          weight: 132,
+          bp: 171,
+          hr: 234,
+          temp: 96,
+          viewed: true
+        }
+
+      ],
+
+
+
 		},
 		{
 			patient: 'Dearson, Perry P.',
 			status: 'active',
 			noOfTreatments: 2,
-			treatments: 'Yesterday, July 8',
-			alarmsAlerts: '1 Alert',
-			weight: 135,
-      bp: 171,
-      hr: 234,
-      temp: 96,
-			viewed: false
+			treatments: [
+        {
+          end: 'Yesterday, July 8',
+          alarmsAlerts: '1 Alert',
+          weight: 135,
+          bp: 171,
+          hr: 234,
+          temp: 96,
+          viewed: false
+        },
+        {
+          end: '3 days ago, July 5',
+          alarmsAlerts: '1 Alarm',
+          weight: 134,
+          bp: 171,
+          hr: 234,
+          temp: 96,
+          viewed: true
+        }
+      ],
+
 		},
-		{
-			patient: 'Dearson, Perry P..',
-			status: 'active',
-			treatments: '3 days ago, July 5',
-			alarmsAlerts: '1 Alarm',
-			weight: 134,
-      bp: 171,
-      hr: 234,
-      temp: 96,
-			viewed: true
-		},
-		{patient: 'Emerson, Frank J.', status: 'onboarding', noOfTreatments: 0}
+		{patient: 'Emerson, Frank J.', status: 'onboarding', noOfTreatments: 0, treatments: []}
 	];
+
+	const colSpan = () => {
+		return 6;
+	};
+
 	const columnDefs = [
-		{headerName: 'Patient', field: 'patient', rowSpan, cellClassRules: {'cell-span': rowSpan}, minWidth: 100},
-		{headerName: 'Status', field: 'status', rowSpan, cellClassRules: {'cell-span': rowSpan}, minWidth: 100},
-		{headerName: '', field: 'viewed', cellRenderer: 'viewedIndicator', width: .125, cellStyle: {paddingLeft: 0, paddingRight: 0, margin: 0}},
-		{headerName: 'Treatments', field: 'treatments', minWidth: 100},
-		{headerName: 'Alarms & Alerts', field: 'alarmsAlerts', minWidth: 100},
+		{headerName: 'Patient', field: 'patient', minWidth: 100, },
+		{headerName: 'Status', field: 'status', minWidth: 100, },
+		{headerName: 'Treatments', field: 'end', cellRenderer: 'treatmentCells', minWidth: 100, flex: 1, cellStyle: { 'white-space': 'normal', paddingLeft: 0, paddingRight: 0  }, colSpan, cellClassRules: {'cell-span': colSpan}},
+		{headerName: 'Alarms & Alerts', field: 'alarmsAlerts', minWidth: 100, cellStyle: {paddingLeft: 0, paddingRight: 0}},
 		{headerName: 'Weight', field: 'weight', width: 90, suppressSizeToFit: true},
 		{headerName: 'BP', field: 'bp', width: 75, suppressSizeToFit: true},
 		{headerName: 'HR', field: 'hr', width: 75, suppressSizeToFit: true},
 		{headerName: 'Temp', field: 'temp', width: 75, suppressSizeToFit: true}
 	];
 
-	const cars = [
-		{make: 'Tesla', models: [{model:'Model 3'}, {model:'Model Y'}]},
-		{make: 'Lexus', models: [{model:'ES300'}, {model:'LS460'}]}
-	]
-
-	const wtf = params => {
-		console.log(params.value)
-		return renderToString(<div className="ag-theme-alpine" style={{height: 350, width: '100%'}}><AgGridReact rowData={params.value}><AgGridColumn field='model' /></AgGridReact></div>);
-	}
 
 	return (
 		<div className="ag-theme-alpine" style={{height: 350, width: '100%'}}>
@@ -99,12 +98,13 @@ function App() {
 				rowData,
 				columnDefs,
 				frameworkComponents,
-				suppressRowTransform: true
+				suppressRowTransform: true,
+        getRowHeight: (params) => {
+				  const noOfTreatments = params.data.noOfTreatments;
+				  return noOfTreatments ? noOfTreatments * 43 : 43;
+        },
+				defaultColDef: { resizeable: true },
 			}}/>
-			<AgGridReact rowData={cars}>
-				<AgGridColumn field='make' />
-				<AgGridColumn field='models' cellRenderer={params => wtf(params)} />
-			</AgGridReact>
 		</div>
 	);
 }
