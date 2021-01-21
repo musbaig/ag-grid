@@ -42,6 +42,10 @@
 }
 
 .treatment-row {
-  padding: 0 .5rem;
+  padding: 0 17px;
   border-bottom: solid black;
+}
+
+.treatment-cols {
+    padding: 0 !important;
 }

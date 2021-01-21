@@ -84,12 +84,12 @@ function App() {
 	const columnDefs = [
 		{headerName: 'Patient', field: 'patient', minWidth: 100, },
 		{headerName: 'Status', field: 'status', minWidth: 100, },
-		{headerName: 'Treatments', field: 'end', cellRenderer: 'treatmentsCell', minWidth: 100, flex: 1, cellStyle: { 'white-space': 'normal' }, cellClass: ''},
-		{headerName: 'Alarms & Alerts', field: 'alarmsAlerts', minWidth: 100, },
-		{headerName: 'Weight', field: 'weight', width: 90, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', },
-		{headerName: 'BP', field: 'bp', width: 75, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', },
-		{headerName: 'HR', field: 'hr', width: 75, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', },
-		{headerName: 'Temp', field: 'temp', width: 75, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', }
+		{headerName: 'Treatments', field: 'end', cellRenderer: 'treatmentsCell', minWidth: 100, flex: 1, cellStyle: { 'white-space': 'normal' }, cellClass: 'treatment-cols'},
+		{headerName: 'Alarms & Alerts', field: 'alarmsAlerts', minWidth: 100, cellClass: 'treatment-cols'},
+		{headerName: 'Weight', field: 'weight', width: 90, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', cellClass: 'treatment-cols'},
+		{headerName: 'BP', field: 'bp', width: 75, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', cellClass: 'treatment-cols'},
+		{headerName: 'HR', field: 'hr', width: 75, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', cellClass: 'treatment-cols'},
+		{headerName: 'Temp', field: 'temp', width: 75, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', cellClass: 'treatment-cols'}
 	];
 
 
