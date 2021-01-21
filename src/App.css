@@ -43,7 +43,7 @@
 
 .treatment-row {
   padding: 0 17px;
-  border-bottom: solid black;
+  border-bottom: solid lightblue 1px;
 }
 
 .treatment-cols {
@@ -53,6 +53,6 @@
 }
 
 .treatment-col {
-  border-left: solid black 1px !important;
+  border-left: solid lightblue 1px !important;
 
 }

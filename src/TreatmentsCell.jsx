@@ -10,7 +10,7 @@ const TreatmentsCell = ({ data: { treatments }, column: { colDef: { field } }}) 
           key={treatment.id}
           className='treatment-row'
         >
-          {treatment[field] || '&nbsp'}
+          {treatment[field]}
         </div>
       )
     });

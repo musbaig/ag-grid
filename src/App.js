@@ -85,7 +85,7 @@ function App() {
 		{headerName: 'Patient', field: 'patient', minWidth: 100, },
 		{headerName: 'Status', field: 'status', minWidth: 100, },
 		{headerName: 'Treatments', field: 'end', cellRenderer: 'treatmentsCell', minWidth: 100, flex: 1, cellStyle: { 'white-space': 'normal', paddingRight: 0, paddingLeft: 0 }, cellClass: 'treatment-cols treatment-col'},
-		{headerName: 'Alarms & Alerts', field: 'alarmsAlerts', minWidth: 100, cellClass: 'treatment-cols', cellStyle: { paddingRight: 0, paddingLeft: 0}},
+		{headerName: 'Alarms & Alerts', field: 'alarmsAlerts', minWidth: 100, cellRenderer: 'treatmentsCell', cellClass: 'treatment-cols', cellStyle: { paddingRight: 0, paddingLeft: 0}},
 		{headerName: 'Weight', field: 'weight', width: 90, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', cellClass: 'treatment-cols', cellStyle: { paddingRight: 0, paddingLeft: 0}},
 		{headerName: 'BP', field: 'bp', width: 75, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', cellClass: 'treatment-cols', cellStyle: { paddingRight: 0, paddingLeft: 0}},
 		{headerName: 'HR', field: 'hr', width: 75, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', cellClass: 'treatment-cols', cellStyle: { paddingRight: 0, paddingLeft: 0}},
@@ -102,7 +102,7 @@ function App() {
 				suppressRowTransform: true,
         getRowHeight: (params) => {
 				  const noOfTreatments = params.data.noOfTreatments;
-				  return noOfTreatments ? noOfTreatments * 43 : 43;
+				  return noOfTreatments ? noOfTreatments * 41 : 41;
         },
 				defaultColDef: { resizeable: true },
 			}}/>
