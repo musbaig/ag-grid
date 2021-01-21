@@ -40,3 +40,8 @@
 .cell-span {
   background-color: #ffffff;
 }
+
+.treatment-row {
+  padding: 0 .5rem;
+  border-bottom: solid black;
+}

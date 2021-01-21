@@ -2,12 +2,12 @@ import './App.css';
 import {AgGridReact} from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import TreatmentCells from './TreatmentCells.jsx';
+import TreatmentsCell from './TreatmentsCell.jsx';
 
 
 function App() {
 	const frameworkComponents = {
-    treatmentCells: TreatmentCells,
+    treatmentsCell: TreatmentsCell,
 	};
 	const rowData = [
 		{
@@ -17,6 +17,7 @@ function App() {
 			noOfTreatments: 3,
 			treatments: [
         {
+          id: 1,
           end: 'Yesterday, July 8',
           alarmsAlerts: '4 Alert',
           weight: 150,
@@ -25,6 +26,7 @@ function App() {
           temp: 96,
           viewed: false
         }, {
+          id: 2,
           end: '2 days ago, July 7',
           alarmsAlerts: '2 Alarms',
           weight: 145,
@@ -33,6 +35,7 @@ function App() {
           temp: 96,
           viewed: true
         }, {
+          id: 3,
           end: '9 days ago, June 30',
           alarmsAlerts: '3 Alarms',
           weight: 132,
@@ -53,6 +56,7 @@ function App() {
 			noOfTreatments: 2,
 			treatments: [
         {
+          id: 4,
           end: 'Yesterday, July 8',
           alarmsAlerts: '1 Alert',
           weight: 135,
@@ -62,6 +66,7 @@ function App() {
           viewed: false
         },
         {
+          id: 5,
           end: '3 days ago, July 5',
           alarmsAlerts: '1 Alarm',
           weight: 134,
@@ -76,19 +81,15 @@ function App() {
 		{patient: 'Emerson, Frank J.', status: 'onboarding', noOfTreatments: 0, treatments: []}
 	];
 
-	const colSpan = () => {
-		return 6;
-	};
-
 	const columnDefs = [
 		{headerName: 'Patient', field: 'patient', minWidth: 100, },
 		{headerName: 'Status', field: 'status', minWidth: 100, },
-		{headerName: 'Treatments', field: 'end', cellRenderer: 'treatmentCells', minWidth: 100, flex: 1, cellStyle: { 'white-space': 'normal', paddingLeft: 0, paddingRight: 0  }, colSpan, cellClassRules: {'cell-span': colSpan}},
-		{headerName: 'Alarms & Alerts', field: 'alarmsAlerts', minWidth: 100, cellStyle: {paddingLeft: 0, paddingRight: 0}},
-		{headerName: 'Weight', field: 'weight', width: 90, suppressSizeToFit: true},
-		{headerName: 'BP', field: 'bp', width: 75, suppressSizeToFit: true},
-		{headerName: 'HR', field: 'hr', width: 75, suppressSizeToFit: true},
-		{headerName: 'Temp', field: 'temp', width: 75, suppressSizeToFit: true}
+		{headerName: 'Treatments', field: 'end', cellRenderer: 'treatmentsCell', minWidth: 100, flex: 1, cellStyle: { 'white-space': 'normal' }, cellClass: ''},
+		{headerName: 'Alarms & Alerts', field: 'alarmsAlerts', minWidth: 100, },
+		{headerName: 'Weight', field: 'weight', width: 90, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', },
+		{headerName: 'BP', field: 'bp', width: 75, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', },
+		{headerName: 'HR', field: 'hr', width: 75, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', },
+		{headerName: 'Temp', field: 'temp', width: 75, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', }
 	];
 
 
