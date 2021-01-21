@@ -47,5 +47,12 @@
 }
 
 .treatment-cols {
-    padding: 0 !important;
+  padding: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
+
+.treatment-col {
+  border-left: solid black 1px !important;
+
 }
