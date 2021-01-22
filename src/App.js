@@ -83,7 +83,7 @@ function App() {
 	const columnDefs = [
 		{headerName: 'Patient', field: 'patient', minWidth: 100, },
 		{headerName: 'Status', field: 'status', minWidth: 100, },
-		{headerName: 'Treatments', field: 'end', cellRenderer: 'treatmentCells', minWidth: 100, flex: 1, cellStyle: { 'white-space': 'normal', paddingLeft: 0, paddingRight: 0  }, colSpan, cellClassRules: {'cell-span': colSpan}},
+		{headerName: 'Treatments', field: 'end', cellRenderer: 'treatmentCells', minWidth: 100, flex: 1, cellStyle: { 'white-space': 'normal', paddingLeft: 0, paddingRight: 0, border: 0 }, colSpan, cellClassRules: {'cell-span': colSpan}},
 		{headerName: 'Alarms & Alerts', field: 'alarmsAlerts', minWidth: 100, cellStyle: {paddingLeft: 0, paddingRight: 0}},
 		{headerName: 'Weight', field: 'weight', width: 90, suppressSizeToFit: true},
 		{headerName: 'BP', field: 'bp', width: 75, suppressSizeToFit: true},
@@ -101,9 +101,10 @@ function App() {
 				suppressRowTransform: true,
         getRowHeight: (params) => {
 				  const noOfTreatments = params.data.noOfTreatments;
-				  return noOfTreatments ? noOfTreatments * 43 : 43;
+				  return noOfTreatments ? noOfTreatments * 41 : 41;
         },
 				defaultColDef: { resizeable: true },
+        rowStyle: { borderTop: '1px solid #dde2eb', borderBottom: '1px solid #dde2eb'}
 			}}/>
 		</div>
 	);

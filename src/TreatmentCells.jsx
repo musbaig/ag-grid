@@ -20,7 +20,8 @@ const TreatmentCells = ({ data: { treatments }}) => {
           rowData,
           columnDefs,
           suppressRowTransform: true,
-          headerHeight: 0
+          headerHeight: 0,
+          rowStyle: { borderTop: '1px solid #dde2eb', borderBottom: '1px solid #dde2eb'}
         }}/>
       </div>)
   } else {
