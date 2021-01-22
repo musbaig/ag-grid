@@ -105,6 +105,7 @@ function App() {
 				  return noOfTreatments ? noOfTreatments * 41 : 41;
         },
 				defaultColDef: { resizeable: true },
+        rowStyle: { borderTop: '1px solid grey', borderBottom: '1px solid grey'}
 			}}/>
 		</div>
 	);
