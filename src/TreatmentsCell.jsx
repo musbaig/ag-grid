@@ -5,10 +5,11 @@ const TreatmentsCell = ({ data: { treatments }, column: { colDef: { field } }}) 
   if (treatments.length) {
     const treatmentsCell = treatments.map((treatment, index) => {
       console.log('treatment', treatment);
+      const rowClasses = field === 'end' ? 'treatment-row treatment-col' : 'treatment-row';
       return (
         <div
           key={treatment.id}
-          className='treatment-row'
+          className={rowClasses}
         >
           {treatment[field]}
         </div>

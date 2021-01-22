@@ -84,7 +84,7 @@ function App() {
 	const columnDefs = [
 		{headerName: 'Patient', field: 'patient', minWidth: 100, },
 		{headerName: 'Status', field: 'status', minWidth: 100, },
-		{headerName: 'Treatments', field: 'end', cellRenderer: 'treatmentsCell', minWidth: 100, flex: 1, cellStyle: { 'white-space': 'normal', paddingRight: 0, paddingLeft: 0 }, cellClass: 'treatment-cols treatment-col'},
+		{headerName: 'Treatments', field: 'end', cellRenderer: 'treatmentsCell', minWidth: 100, flex: 1, cellStyle: { 'white-space': 'normal', paddingRight: 0, paddingLeft: 0 }, cellClass: 'treatment-cols'},
 		{headerName: 'Alarms & Alerts', field: 'alarmsAlerts', minWidth: 100, cellRenderer: 'treatmentsCell', cellClass: 'treatment-cols', cellStyle: { paddingRight: 0, paddingLeft: 0}},
 		{headerName: 'Weight', field: 'weight', width: 90, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', cellClass: 'treatment-cols', cellStyle: { paddingRight: 0, paddingLeft: 0}},
 		{headerName: 'BP', field: 'bp', width: 75, suppressSizeToFit: true, cellRenderer: 'treatmentsCell', cellClass: 'treatment-cols', cellStyle: { paddingRight: 0, paddingLeft: 0}},

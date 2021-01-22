@@ -49,8 +49,7 @@
 
 .treatment-cols {
   padding: 0 !important;
-  border-left: 0 !important;
-  border-right: 0 !important;
+  border: 0 !important;
 }
 
 .treatment-col {
