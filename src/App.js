@@ -26,7 +26,7 @@ function App() {
           viewed: false
         }, {
           end: '2 days ago, July 7',
-          alarmsAlerts: '2 Alarms',
+          alarmsAlerts: '',
           weight: 145,
           bp: 171,
           hr: 234,
