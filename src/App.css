@@ -44,6 +44,7 @@
 .treatment-row {
   padding: 0 17px;
   border-bottom: solid lightblue 1px;
+  min-height: 42px;
 }
 
 .treatment-cols {
